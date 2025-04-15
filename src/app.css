@@ -1,19 +1,28 @@
 @import "tailwindcss";
 
 :root {
-    --bg-color: #ffffff;
-    --text-color: #333333;
-    /* other light mode variables */
-  }
-  
-  .dark {
-    --bg-color: #1a1a1a;
+    --bg-color: linear-gradient(135deg, #f3e7e9 0%, #e3eeff 50%, #f3e7e9 100%);
+    --text-color: #000000;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(255, 255, 255, 0.2);
+}
+
+.dark {
+    --bg-color: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     --text-color: #f0f0f0;
-    /* other dark mode variables */
-  }
-  
-  body {
-    background-color: var(--bg-color);
+    --card-bg: rgba(30, 30, 30, 0.85);
+    --card-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background: var(--bg-color);
     color: var(--text-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
+    transition: all 0.3s ease;
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+
+
+
+@custom-variant dark (&:where(.dark, .dark *));

@@ -7,7 +7,6 @@
 
 <div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
   <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold text-center mb-8">Expense Tracker</h1>
     
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
       <div class="lg:col-span-2 space-y-6">

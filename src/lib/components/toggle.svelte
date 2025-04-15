@@ -1,83 +1,58 @@
-<script>
+<script lang="ts">
+    import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
-  
-    // Create a store for dark mode state
-    const darkMode = writable(false);
-  
-    // Toggle function
-    function toggleDarkMode() {
-      darkMode.update(mode => {
-        const newMode = !mode;
-        // Save preference to localStorage
-        localStorage.setItem('darkMode', newMode);
-        // Apply class to document
-        if (newMode) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
-        return newMode;
-      });
-    }
-  
-    // Initialize from localStorage or prefer-color-scheme
-    if (typeof window !== 'undefined') {
-      const savedMode = localStorage.getItem('darkMode');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      
-      const initialMode = savedMode !== null 
-        ? savedMode === 'true'
-        : prefersDark;
-      
-      darkMode.set(initialMode);
-      if (initialMode) {
+    
+    const theme = writable<'light' | 'dark'>('light');
+    
+    const applyTheme = (value: 'light' | 'dark') => {
+      if (value === 'light') {
+        document.documentElement.classList.remove('dark');
+        localStorage.theme = 'light';
+      } else if (value === 'dark') {
         document.documentElement.classList.add('dark');
+        localStorage.theme = 'dark';
       }
+    };
+    
+    onMount(() => {
+      const stored = localStorage.theme as 'light' | 'dark' | undefined;
+    
+      if (stored === 'light' || stored === 'dark') {
+        theme.set(stored);
+        applyTheme(stored);
+      } else {
+        theme.set('light'); // Default to light theme
+        applyTheme('light');
+      }
+    });
+    
+    function toggleTheme(value: 'light' | 'dark') {
+      theme.set(value);
+      applyTheme(value);
     }
   </script>
   
-  <button on:click={toggleDarkMode} class="dark-mode-toggle">
-    <span class="sr-only">Toggle dark mode</span>
-    <span class="icon sun" aria-hidden="true" class:visible={!$darkMode}>☀️</span>
-    <span class="icon moon" aria-hidden="true" class:visible={$darkMode}>🌙</span>
-  </button>
+  <div class="flex gap-2 items-center">
+    <!-- Light Mode Button -->
+    <button 
+      on:click={() => toggleTheme('light')} 
+      class="p-2 rounded-fulltransition-all text-white"
+      aria-label="Switch to Light Mode"
+    >
+      ☀️
+    </button>
+  
+    <!-- Dark Mode Button -->
+    <button 
+      on:click={() => toggleTheme('dark')} 
+      class="p-2 rounded-full   transition-all text-white"
+      aria-label="Switch to Dark Mode"
+    >
+      🌙
+    </button>
+  </div>
   
   <style>
-    :global(.dark) {
-      background-color: #1a1a1a;
-      color: #f0f0f0;
-    }
-  
-    .dark-mode-toggle {
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      border-radius: 50%;
-      transition: all 0.3s ease;
-    }
-  
-    .dark-mode-toggle:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  
-    :global(.dark) .dark-mode-toggle:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  
-    .icon {
-      display: inline-block;
-      font-size: 1.2rem;
-    }
-  
-    .sun {
-      display: none;
-    }
-  
-    .moon {
-      display: none;
-    }
-  
     .sr-only {
       position: absolute;
       width: 1px;
@@ -89,7 +64,5 @@
       white-space: nowrap;
       border-width: 0;
     }
-    .visible {
-      display: block;
-    }
   </style>
+  
