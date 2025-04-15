@@ -1,58 +1,114 @@
-# Svelte library
+# Expense Tracker — SvelteKit
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+A modern and lightweight Expense Tracker built using **SvelteKit**, **TailwindCSS**, and **Vite**.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+---
 
-## Creating a project
+## 🚀 Getting Started
 
-If you're seeing this, you've probably already done this step. Congrats!
+### 1. Clone the repository
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
 ```
 
-## Developing
+---
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### 2. Install dependencies
+
+Make sure you have **Node.js (18 or higher)** installed.
+
+Using npm:
+```bash
+npm install
+```
+
+
+---
+
+### 3. Start the development server
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
-
-## Building
-
-To build your library:
-
-```bash
-npm run package
+Visit:
+```
+http://localhost:5173/
 ```
 
-To create a production version of your showcase app:
+---
+
+### 4. Build for production
 
 ```bash
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+This compiles your SvelteKit app for production deployment.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+---
 
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
+### 5. Preview production build
 
 ```bash
-npm publish
+npm run preview
 ```
+
+This serves your built project locally for testing.
+
+---
+
+## 🛋️ Project Structure
+
+```
+src/
+├── lib/            # Components, stores, and utilities
+├── routes/         # Svelte pages and routing
+├── app.html        # HTML entry template
+static/             # Static assets (images, icons, etc.)
+```
+
+---
+
+## 🚡 Tech Stack
+
+- 🦜 SvelteKit
+- 🌟 TailwindCSS
+- ⚡ Vite
+- 🗃️ LocalStorage (or any backend you like!)
+
+---
+
+## 🚨 Notes
+
+- For **PWA support** make sure your `vite.config.js` includes `vite-plugin-pwa` properly configured with icons in the `static/` folder.
+- You can replace the `manifest.webmanifest` with your own if required for install prompts.
+
+---
+
+## 😎 Deploying
+
+You can deploy this SvelteKit project easily to:
+- Vercel
+- Netlify
+- Cloudflare Pages
+- or any Node-friendly host!
+
+---
+
+## ✨ Contribution
+
+PRs and suggestions are welcome! Feel free to fork and improve the tracker.
+
+---
+
+## ❤️ License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Happy tracking your expenses! 🍀
+
