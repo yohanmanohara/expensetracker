@@ -110,7 +110,7 @@
       
       updateChart()
       
-      // Update chart when expenses change
+     
       unsubscribe = expenses.subscribe(updateChart)
   }
   
