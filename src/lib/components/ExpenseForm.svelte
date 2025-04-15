@@ -64,12 +64,11 @@
         Amount <span class="text-red-500">*</span>
       </label>
       <div class="relative">
-        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400">$</span>
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 dark:text-gray-400 ">Rs.</span>
         <input
           id="amount"
           type="number"
-          min="0.01"
-          step="0.01"
+          min="0.00"
           bind:value={amount}
           required
           placeholder="0.00"
