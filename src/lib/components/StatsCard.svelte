@@ -16,7 +16,7 @@
           </div>
           <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Total Expenses</h3>
       </div>
-      <p class="text-2xl font-semibold text-gray-900 dark:text-white">${totalExpenses.toFixed(2)}</p>
+      <p class="text-2xl font-semibold text-gray-900 dark:text-white">Rs {totalExpenses.toFixed(2)}</p>
       <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">All-time spending</p>
   </div>
 
@@ -44,7 +44,7 @@
           </div>
           <h3 class="text-sm font-medium text-gray-500 dark:text-gray-400">Average</h3>
       </div>
-      <p class="text-2xl font-semibold text-gray-900 dark:text-white">${averageExpense.toFixed(2)}</p>
+      <p class="text-2xl font-semibold text-gray-900 dark:text-white">Rs {averageExpense.toFixed(2)}</p>
       <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">Per transaction</p>
   </div>
 </div>

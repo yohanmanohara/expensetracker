@@ -16,7 +16,7 @@
     
     onMount(() => {
       const stored = localStorage.theme as 'light' | 'dark' | undefined;
-    
+      
       if (stored === 'light' || stored === 'dark') {
         theme.set(stored);
         applyTheme(stored);
@@ -26,29 +26,27 @@
       }
     });
     
-    function toggleTheme(value: 'light' | 'dark') {
-      theme.set(value);
-      applyTheme(value);
+    function toggleTheme() {
+      theme.update((currentTheme) => {
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        applyTheme(newTheme);
+        return newTheme;
+      });
     }
   </script>
   
-  <div class="flex gap-2 items-center">
-    <!-- Light Mode Button -->
+  <div class="flex items-center">
+    <!-- Single Button to Toggle Between Light and Dark Mode -->
     <button 
-      on:click={() => toggleTheme('light')} 
-      class="p-2 rounded-fulltransition-all text-white"
-      aria-label="Switch to Light Mode"
+      on:click={toggleTheme} 
+      class="p-2 rounded-full transition-all text-white"
+      aria-label="Toggle Theme"
     >
-      ☀️
-    </button>
-  
-    <!-- Dark Mode Button -->
-    <button 
-      on:click={() => toggleTheme('dark')} 
-      class="p-2 rounded-full   transition-all text-white"
-      aria-label="Switch to Dark Mode"
-    >
-      🌙
+      {#if $theme === 'light'}
+        ☀️
+      {:else}
+        🌙
+      {/if}
     </button>
   </div>
   
