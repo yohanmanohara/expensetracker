@@ -76,21 +76,23 @@
  
   <div class="flex justify-between items-center mb-6 bg-white/50 dark:bg-gray-900/50 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700">
     <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Your Expenses</h2>
-    <div class="flex gap-4 items-center">
-     
+    <div class="flex flex-col md:flex-row gap-4 items-center">
+      <!-- Category Dropdown -->
       <select bind:value={selectedCategory} class="p-2 rounded-lg border dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600">
         <option value="All">All Categories</option>
         {#each Object.keys(categoryColors) as cat}
           <option value={cat}>{cat}</option>
         {/each}
       </select>
-      
+    
+      <!-- Date Input -->
       <input
         type="date"
         bind:value={selectedDate}
         class="p-2 rounded-lg border dark:bg-gray-800 dark:text-gray-100 dark:border-gray-600"
       />
     </div>
+    
   </div>
 
   {#if filteredExpenses.length === 0}
